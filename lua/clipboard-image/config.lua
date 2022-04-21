@@ -9,7 +9,7 @@ M.config = {
     affix = '%s'
   },
   asciidoc = {
-    affix = 'image::%s[]'
+    affix = "image::%s[]"
   },
   markdown = {
     affix = '![](%s)'
