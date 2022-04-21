@@ -1,5 +1,5 @@
 name: Syntax and style checking
-on: [push, pull_request]
+on: pull_request
 
 jobs:
   check_syntax:
@@ -15,7 +15,7 @@ jobs:
           sudo luarocks install luacheck
 
       - name: Lint
-        run: luacheck lua/
+        run: luacheck lua
 
   format_code:
     name: stylua
@@ -26,5 +26,4 @@ jobs:
       - uses: JohnnyMorganz/stylua-action@1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --color always --check lua/
-
+          args: --color always lua/
