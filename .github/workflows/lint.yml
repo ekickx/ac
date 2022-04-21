@@ -1,5 +1,5 @@
 name: Syntax and style checking
-on: [push, pull_request]
+on: pull_request
 
 jobs:
   check_syntax:
@@ -32,7 +32,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COMMIT_MSG: "chore: format with stylua"
-        runs: |
+        run: |
           git config --local user.email "actions@github"
           git config --local user.name "Github Actions"
           git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
