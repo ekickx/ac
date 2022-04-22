@@ -1,21 +1,20 @@
 .PHONY: test prepare macos-prepare download-img
 
-prepare:
+download-img:
+	@curl -fLo test/expected.png https://link.ekickx.vercel.app/clipboard-image.nvim/test_expected.png
+
+prepare: download-img
 	@if [ ! -d "./vendor/plenary.nvim" ]; then \
 		mkdir -p vendor; \
 		git clone --depth=1 https://github.com/nvim-lua/plenary.nvim vendor/plenary.nvim; \
 	fi
 
-download-img:
-	@curl -fLo test/expected.png https://link.ekickx.vercel.app/clipboard-image.nvim/test_expected.png
-
-macos-prepare: download-img
+macos-prepare:
 	brew update && \
 	brew install pngpaste && \
-	./test/macos-copy-file test/expected.png
 
 test: prepare
-	@nvim \
+	nvim \
 		--headless \
 		--noplugin \
 		-u test/minimal_init.vim \
