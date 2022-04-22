@@ -16,6 +16,8 @@
 
 ---
 
+TEST
+
 ### Install
 > ❗ Requirement: **`xclip`** (X11), **`wl-clipboard`** (Wayland), **`pngpaste`** (MacOS)
 > 
