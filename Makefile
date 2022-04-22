@@ -11,7 +11,7 @@ prepare: download-img
 
 macos-prepare:
 	brew update && \
-	brew install pngpaste && \
+	brew install pngpaste
 
 test: prepare
 	nvim \
