@@ -15,9 +15,9 @@ jobs:
           sudo luarocks install luacheck
 
       - name: Lint
-      - run: luacheck lua/
+        run: luacheck lua
 
-  format_code:
+  style_checking:
     name: stylua
     runs-on: ubuntu-20.04
     steps:
@@ -27,4 +27,3 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           args: --color always --check lua/
-
