@@ -28,7 +28,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           args: --color always lua/
 
-      - name: Push change
+      - name: Push changes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COMMIT_MSG: "chore: format with stylua"
@@ -36,6 +36,9 @@ jobs:
           git config --local user.email "actions@github"
           git config --local user.name "Github Actions"
           git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git add lua/
           # Only commit & push if there are changes
-          git diff --quiet && git diff --staged --quiet || (git commit -m "${COMMIT_MSG}"; git push origin HEAD:${GITHUB_REF})
+          if ! [[ -z $(git status -s) ]]; then
+            git commit -m "${COMMIT_MSG}" lua/*
+            git push origin HEAD:${GITHUB_REF}
+          fi
+
