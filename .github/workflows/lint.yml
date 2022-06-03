@@ -1,5 +1,8 @@
 name: Syntax and style checking
-on: push
+on:
+  push:
+    paths-ignore:
+      - "*.md"
 
 jobs:
   check_syntax:
