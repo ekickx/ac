@@ -23,4 +23,10 @@ test: prepare
 		-c "PlenaryBustedDirectory test/ { minimal_init = './test/minimal_init.vim' }"
 
 lint:
-	luacheck lua/
+	@luacheck lua/
+
+format_check:
+	@stylua -c lua/
+
+format:
+	@stylua lua/

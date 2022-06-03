@@ -16,3 +16,18 @@ jobs:
 
       - name: Lint
         run: make lint
+
+  check_style:
+    name: Stylua
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare
+        run: |
+          sudo apt update
+          sudo apt install cargo
+          cargo install stylua
+
+      - name: Check formatting
+        run: make format_check
