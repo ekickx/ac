@@ -7,9 +7,9 @@ M.get_os = function()
     return "Windows"
   end
 
-  local this_os =  tostring(io.popen("uname"):read())
-  if this_os == "Linux" and
-      vim.fn.readfile("/proc/version")[1]:lower():match "microsoft" then
+  local this_os = tostring(io.popen("uname"):read())
+  local is_wsl = vim.fn.readfile("/proc/version")[1]:lower():match "microsoft"
+  if this_os == "Linux" and is_wsl then
     this_os = "Wsl"
   end
   return this_os
