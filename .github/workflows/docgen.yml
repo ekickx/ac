@@ -1,0 +1,32 @@
+name: Document generation
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  docgen:
+    name: Lemmy-help
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create cache key for cargo
+        run: echo "cargo" > dependencies
+      - name: Restore cargo dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            ~/.cargo/.crates.toml
+            ~/.cargo/.crates2.json
+          key: ${{ runner.os }}-cargo-${{ hashFiles('dependencies') }}
+
+      - name: Prepare
+        run: |
+          sudo apt update
+          sudo apt install cargo
+          cargo install lemmy-help --features=cli
