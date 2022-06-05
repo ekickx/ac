@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: echo "stylua" > dependencies
+      - run: echo "cargo" > dependencies
       - name: Restore dependencies cache
         uses: actions/cache@v3
         with:
@@ -35,7 +35,8 @@ jobs:
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
-            target/
+            ~/.cargo/.crates.toml
+            ~/.cargo/.crates2.json
           key: ${{ runner.os }}-cargo-${{ hashFiles('dependencies') }}
 
       - name: Prepare
