@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create cache key for cargo
+      - name: Create cache
         run: echo "lemmy-help" > dependencies
       - name: Restore cargo dependencies cache
         uses: actions/cache@v3

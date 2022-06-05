@@ -26,8 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create cache key for cargo
-        run: echo "cargo" > dependencies
+      - name: Create cache key
+        run: echo "stylua" > dependencies
       - name: Restore cargo dependencies cache
         uses: actions/cache@v3
         with:
