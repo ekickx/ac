@@ -26,8 +26,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: echo "cargo" > dependencies
-      - name: Restore dependencies cache
+      - name: Create cache key for cargo
+        run: echo "cargo" > dependencies
+      - name: Restore cargo dependencies cache
         uses: actions/cache@v3
         with:
           path: |
