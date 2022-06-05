@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create cache key for cargo
-        run: echo "cargo" > dependencies
+        run: echo "lemmy-help" > dependencies
       - name: Restore cargo dependencies cache
         uses: actions/cache@v3
         with:
